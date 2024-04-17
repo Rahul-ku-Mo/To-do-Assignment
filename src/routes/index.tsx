@@ -1,10 +1,12 @@
 import { Navigate, useRoutes } from "react-router-dom";
-// import SignupPage from "@/pages/SignupPage";
-// import { useAuthContext } from "@/hooks/useAuthContext";
+
 import { SignupPage, LoginPage, ToDoPage } from "./elements";
 
+import { useAuthContext } from "@/hooks/use-auth-context";
+import { TodoContextProvider } from "@/context/todo-context";
+
 const Router = () => {
-  const isLoggedIn = false;
+  const { isLoggedIn } = useAuthContext();
 
   return useRoutes([
     {
@@ -29,7 +31,13 @@ const Router = () => {
     },
     {
       path: "/todoDashboard",
-      element: isLoggedIn ? <ToDoPage /> : <Navigate to="/login" />,
+      element: isLoggedIn ? (
+        <TodoContextProvider>
+          <ToDoPage />
+        </TodoContextProvider>
+      ) : (
+        <Navigate to="/login" />
+      ),
     },
   ]);
 };

@@ -1,8 +1,9 @@
+import LoadingScreen from "@/components/loading-sceen.tsx";
 import { Suspense, lazy, LazyExoticComponent, FC } from "react";
 
 const Loadable = (Component: LazyExoticComponent<FC>) => () =>
   (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<LoadingScreen/>}>
       <Component />
     </Suspense>
   );

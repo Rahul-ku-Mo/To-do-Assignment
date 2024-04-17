@@ -1,10 +1,15 @@
-import { LoginForm } from "@/components/login";
-
+import LoginForm from "@/components/login";
+import { ThemeHeader } from "@/layouts/theme-header";
+import Footer from "@/layouts/Footer";
 const LoginPage = () => {
   return (
-    <main className="absolute inset-0 flex items-center justify-center">
+  <>
+    <ThemeHeader/>
+    <main className="h-screen w-full flex items-center justify-center">
       <LoginForm />
     </main>
+    <Footer/>
+  </>
   );
 };
 
